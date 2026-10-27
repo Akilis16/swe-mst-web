@@ -1,0 +1,656 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  padding-bottom: 60px;
+}
+
+/* -------------------- Cabeçalho -------------------- */
+header {
+  background-color: rgb(255, 255, 255);
+}
+
+header hr {
+  margin-top: 0.5%;
+  border: 0;
+  border-top: 2px solid rgb(0, 0, 0);
+}
+
+.logo-container {
+  width: 27vh;
+  display: flex;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+  text-align: center;
+}
+
+.logo-container a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 45%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  transition: transform 0.1s ease;
+}
+
+.logo-container img:active {
+  transform: scale(1.05);
+}
+
+.logo-container h1 {
+  font-size: 20px;
+  font-family: 'Rowdies', cursive;
+  color: black;
+}
+
+/* -------------------- Botões de Voltar -------------------- */
+.voltar {
+  display: flex;
+  gap: 1vh;
+  padding: 12px 18px;
+}
+
+.voltar a {
+  text-decoration: none;
+}
+
+.voltar div {
+  border: 2px solid black;
+  box-shadow: 3px 3px 7px rgb(51, 51, 51);
+  background-color: rgb(211, 237, 255);
+  width: 34px;
+  height: 34px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.1s ease;
+}
+
+.voltar div:hover {
+  background-color: rgb(218, 239, 253);
+}
+
+.voltar div img {
+  width: 70%;
+  height: 70%;
+}
+
+/* -------------------- Rodapé -------------------- */
+footer {
+  background-color: rgb(160, 217, 255);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  height: 4%;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+footer h1 {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  color: black;
+  margin: 0;
+}
+
+/* -------------------- Home Page (Index) -------------------- */
+.jogar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.jogar .btn-jogar {
+  width: 180px;
+  height: 50px;
+  border-radius: 28px;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(160, 217, 255);
+  cursor: pointer;
+  box-shadow: 10px 7px 15px rgb(51, 51, 51);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.jogar .btn-jogar:hover {
+  background-color: rgb(211, 237, 255);
+}
+
+.jogar .btn-jogar:active {
+  transform: scale(0.98);
+}
+
+.jogar .btn-jogar img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.jogar .btn-jogar h1 {
+  font-family: 'Rowdies', cursive;
+  color: rgb(36, 36, 36);
+  font-size: 20px;
+  margin: 0;
+}
+
+/* -------------------- Catálogo (Page 2) -------------------- */
+.jogos .l1,
+.jogos .l2 {
+  display: flex;
+  gap: 5%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.jogos .l1 {
+  margin-top: 6vh;
+}
+
+.jogos .l2 {
+  margin-top: 4vh;
+}
+
+.jogos a {
+  text-decoration: none;
+  color: black;
+}
+
+.jogos .jg-card {
+  background-color: rgb(211, 237, 255);
+  width: 25vh;
+  min-width: 170px;
+  height: 25vh;
+  min-height: 170px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 2px solid black;
+  box-shadow: 10px 7px 15px rgb(51, 51, 51);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.jogos .jg-card:hover {
+  background-color: rgb(218, 239, 253);
+}
+
+.jogos .jg-card:active {
+  transform: scale(0.98);
+}
+
+.jogos .jg-card h1 {
+  font-size: 16px;
+  text-align: center;
+  font-family: 'Rowdies', cursive;
+  margin-bottom: 12px;
+  color: black;
+}
+
+.jogos .jg-card img {
+  width: 50%;
+  max-height: 50%;
+  object-fit: contain;
+}
+
+/* -------------------- Jogo da Velha: Modo -------------------- */
+.modo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  align-items: center;
+}
+
+.modo .btn-1vs1,
+.modo .btn-1vsPc {
+  width: 180px;
+  height: 50px;
+  border-radius: 28px;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(160, 217, 255);
+  cursor: pointer;
+  box-shadow: 10px 7px 15px rgb(51, 51, 51);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+  padding: 0;
+}
+
+.modo .btn-1vs1:hover,
+.modo .btn-1vsPc:hover {
+  background-color: rgb(211, 237, 255);
+}
+
+.modo .btn-1vs1:active,
+.modo .btn-1vsPc:active {
+  transform: scale(0.98);
+}
+
+.modo .btn-1vs1 a,
+.modo .btn-1vsPc a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8%;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+}
+
+.modo .btn-1vs1 a img,
+.modo .btn-1vsPc a img {
+  width: 22px;
+  height: 22px;
+}
+
+.modo .btn-1vs1 a h1,
+.modo .btn-1vsPc a h1 {
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 0;
+}
+
+/* -------------------- Jogo da Velha: Partida -------------------- */
+.velha-main {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 65vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.velha-main h1 {
+  text-align: center;
+  font-family: 'Rowdies', cursive;
+  font-size: 26px;
+}
+
+.velha-main hr {
+  font-weight: bold;
+  height: 3px;
+  width: 320px;
+  background: black;
+  border: 0;
+  margin-bottom: 10px;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 6px;
+}
+
+.game button {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  font-size: 50px;
+  font-weight: bold;
+  background: white;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.currentPlayer {
+  text-align: center;
+  font-family: 'Rowdies', cursive;
+  font-size: 20px;
+  margin-top: 14px;
+}
+
+.velha-actions {
+  margin-top: 10px;
+}
+
+.velha-actions .btn-jogar {
+  width: 180px;
+  height: 44px;
+  border-radius: 28px;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(160, 217, 255);
+  cursor: pointer;
+  box-shadow: 6px 5px 10px rgb(51, 51, 51);
+}
+
+.velha-actions .btn-jogar h1 {
+  font-size: 16px;
+  font-family: 'Rowdies', cursive;
+}
+
+/* -------------------- Quiz -------------------- */
+.container {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 800px;
+  border: 3px solid #000000;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 15px 10px 25px rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.questions-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.question {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
+.answers-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.button {
+  background-color: #4863f7;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 6px;
+  height: 48px;
+  padding: 0 32px;
+  cursor: pointer;
+  transition: filter 0.1s ease;
+}
+
+.button:not(:disabled):hover {
+  filter: brightness(0.85);
+}
+
+.answer:disabled {
+  cursor: not-allowed;
+}
+
+.next-question {
+  margin-top: 24px;
+}
+
+.final-message {
+  font-size: 20px;
+  text-align: center;
+}
+
+.final-message span {
+  display: block;
+  margin-top: 8px;
+}
+
+.correct {
+  background-color: #049b48 !important;
+}
+
+.incorrect {
+  background-color: #a10101 !important;
+}
+
+/* -------------------- Sudoku -------------------- */
+.sudoku-container {
+  position: relative;
+  min-height: 75vh;
+  padding: 10px 0;
+}
+
+.sudoku-title {
+  text-align: center;
+  font-family: 'Rowdies', cursive;
+  font-size: 24px;
+  margin-bottom: 2%;
+}
+
+#main {
+  width: 58.3vh;
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  border: 2px solid black;
+}
+
+#row1,
+#row2,
+#row3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  height: 19.4vh;
+  max-height: 166px;
+  width: 19.4vh;
+  max-width: 166px;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cell {
+  border: 1px solid rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+input.input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+input.input.given {
+  background-color: #eef6fb;
+}
+
+button#start,
+button#replay,
+button#answer {
+  height: 48px;
+  width: 140px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: rgb(160, 217, 255);
+  box-shadow: 6px 5px 10px rgb(51, 51, 51);
+  border: 2px solid black;
+  border-radius: 15px;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+button#start:hover,
+button#replay:hover,
+button#answer:hover {
+  background-color: rgb(211, 237, 255);
+}
+
+button#start:disabled,
+button#replay:disabled,
+button#answer:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#start {
+  top: 38%;
+  left: 5%;
+}
+
+#replay {
+  top: 52%;
+  left: 5%;
+}
+
+#answer {
+  top: 66%;
+  left: 5%;
+}
+
+#game_type {
+  position: absolute;
+  top: 24%;
+  left: 78%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#game_type h3 {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+#game_type label {
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.label {
+  cursor: pointer;
+}
+
+#lives {
+  position: absolute;
+  top: 18%;
+  left: 78%;
+  color: orangered;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#timer {
+  top: 18%;
+  position: absolute;
+  left: 5%;
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+}
+
+/* -------------------- Status / Banners -------------------- */
+.status-line {
+  text-align: center;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.banner {
+  margin: 16px auto;
+  max-width: 600px;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgb(211, 237, 255);
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.banner.win {
+  background: #d9f5e4;
+}
+
+.banner.loss {
+  background: #ffd9d9;
+}
+
+/* Responsividade básica */
+@media (max-width: 900px) {
+  #start, #replay, #answer, #timer, #lives, #game_type {
+    position: static;
+    margin: 8px auto;
+    display: block;
+    text-align: center;
+  }
+
+  #main {
+    width: 90vw;
+    max-width: 340px;
+  }
+
+  .box {
+    width: 30vw;
+    max-width: 110px;
+    height: 30vw;
+    max-height: 110px;
+  }
+
+  .answers-container {
+    grid-template-columns: 1fr;
+  }
+}
