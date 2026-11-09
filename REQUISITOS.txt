@@ -1,0 +1,136 @@
+DOCUMENTO DE REQUISITOS DE SOFTWARE - MST WEB
+
+PROJETO: MST - Memoria, Saude e Tecnologia
+MODULO: Front-end Web SPA (swe-mst-web)
+TECNOLOGIAS: React 18, Vite, React Router DOM 6, Jest, React Testing Library
+DATA: 09/11/2026
+VERSAO: 1.0
+
+======================================================================
+1. VISAO GERAL DO SISTEMA
+======================================================================
+O MST Web e uma aplicacao web interativa (SPA) voltada ao estimulo cognitivo,
+saude mental e lazer de usuarios por meio de jogos educativos e de raciocinio.
+A aplicacao foi migrada de uma arquitetura estatica para React + Vite, preservando
+a identidade visual original e estabelecendo integracao com a API RESTful de
+sessoes de jogos.
+
+======================================================================
+2. REQUISITOS FUNCIONAIS (RF)
+======================================================================
+
+[RF01] Navegacao Inicial e Apresentacao
+- O sistema deve exibir na rota '/' o logotipo do MST, cabecalho padrao,
+  rodape de direitos autorais e o botao "Jogos", direcionando ao catalogo.
+
+[RF02] Catalogo de Jogos
+- O sistema deve disponibilizar na rota '/jogos' a grade de jogos:
+  Jogo da Memoria, Jogo da Velha, Quiz, Sudoku e Jogo da Forca.
+  Os jogos ativos permitem inicio imediato; os demais indicam estado informativo.
+
+[RF03] Selecao de Modo do Jogo da Velha
+- Na rota '/jogos/velha', o usuario escolhe entre os modos 'Dois Jogadores'
+  (1 vs 1 local) e 'Contra o Computador' (1 vs PC) via botoes graficos.
+
+[RF04] Partida do Jogo da Velha (1 vs 1 Local)
+- Na rota '/jogos/velha/local', exibe tabuleiro 3x3, alternando turnos entre
+  'X' e 'O', identificando vitorias em linha/coluna/diagonal ou empate (velha),
+  com botao para reiniciar a partida.
+
+[RF05] Partida do Jogo da Velha (Contra o Computador)
+- Na rota '/jogos/velha/cpu', o usuario joga com 'X' e o computador joga
+  com 'O', selecionando uma casa vazia de forma automatica com delay humanizado.
+
+[RF06] Inicializacao do Quiz
+- Na rota '/jogos/quiz', apresenta tela com o botao 'Comecar Quiz!' antes
+  de exibir as questoes.
+
+[RF07] Ciclo e Avaliacao de Questoes do Quiz
+- Apresenta 4 alternativas por questao com feedback instantaneo (verde para
+  acerto, vermelho para erro), desabilitando outras opcoes e liberando o
+  botao 'Proxima pergunta'.
+
+[RF08] Desempenho e Resultado do Quiz
+- Ao final, calcula o percentual de acerto, exibe a pontuacao, mensagem de
+  desempenho ('Excelente :)', 'Muito bom :)', 'Bom', 'Pode melhorar :(') e
+  botao 'Refazer teste'.
+
+[RF09] Configuracao de Partida de Sudoku
+- Na rota '/jogos/sudoku', o usuario escolhe a dificuldade (Facil, Medio,
+  Dificil) e tempo limite (03:00, 05:00 ou 10:00).
+
+[RF10] Grade Interativa do Sudoku
+- Tabuleiro de 9 blocos 3x3 (81 celulas). Celulas da mascara sao somente
+  leitura. Celulas vazias aceitam digitos de 1 a 9.
+
+[RF11] Validacao e Sistema de Vidas do Sudoku
+- O jogador inicia com 5 chances. Digitos errados deduzem 1 chance. Ao zerar
+  as chances ou o tempo, a partida encerra-se com derrota. Ao preencher
+  corretamente todas as casas, declara vitoria.
+
+[RF12] Acoes de Controle do Sudoku
+- Botoes 'Jogar' (iniciar), 'Novo jogo' (reiniciar) e 'Resposta' (revela
+  gabarito e abandona a sessao).
+
+[RF13] Controle de Sessao na API (Play Sessions)
+- Inicia a partida enviando POST /api/v1/play-sessions sem score arbitrario,
+  aguardando o calculo do servidor no encerramento.
+
+[RF14] Envio de Jogadas a API
+- Envia jogadas do jogo da velha, respostas do quiz e celulas do sudoku aos
+  endpoints especificos da sessao.
+
+[RF15] Finalizacao e Abandono na API
+- Invoca POST /api/v1/play-sessions/:id/finish ao vencer/concluir (exibindo score
+  oficial) ou abandon ao desistir/revelar resposta.
+
+[RF16] Operacao Offline com Fallback
+- Se a API estiver fora do ar, os jogos continuam operando normalmente de
+  forma local.
+
+[RF17] Barra de Navegacao Rapida (BackNav)
+- Botao de retorno para inicio (icone casa) e voltar (icone seta) presentes
+  em todas as telas internas.
+
+[RF18] Redirecionamento 404
+- Rotas desconhecidas sao redirecionadas para a rota raiz '/'.
+
+======================================================================
+3. REQUISITOS NAO FUNCIONAIS (RNF)
+======================================================================
+
+[RNF01] Fidelidade Visual e Estilo
+- Paridade visual com o original: fontes 'Roboto' e 'Rowdies', paleta de
+  cores azul MST (#a0d9ff, #d3edff, #daeffd), bordas pretas de 2px e sombras
+  suaves (10px 7px 15px rgb(51, 51, 51)).
+
+[RNF02] Desempenho e Build Otimizado
+- Build com Vite, Hot Module Replacement rapido e tempo de geracao de
+  pacote inferior a 3 segundos.
+
+[RNF03] Arquitetura Componentizada e Modular
+- Separacao rigorosa entre logica pura de regras de jogo (engine.js),
+  componentes React (components/), rotas (pages/) e camada de servicos (api/).
+
+[RNF04] Acessibilidade (a11y)
+- Uso de atributos semanticos e ARIA (role='grid', role='gridcell', aria-label,
+  aria-live='polite', inputMode='numeric').
+
+[RNF05] Confiabilidade e Testes Automatizados
+- Cobertura com testes unitarios e de integracao em Jest e React Testing
+  Library cobrindo motores, telas, rotas e comunicacao HTTP (100% aprovados).
+
+[RNF06] Tratamento Padronizado de Erros HTTP
+- Compatibilidade com Problem Details (RFC 7807) para capturar codigos
+  estruturados da API.
+
+[RNF07] Seguranca e Limpeza de Escopo
+- Ausencia de modulos de autenticacao fantasmas ou bibliotecas desnecessarias,
+  mantendo foco no catalogo publico e jogos cognitivos.
+
+[RNF08] Compatibilidade e Responsividade
+- Funcionamento consistente nos principais navegadores e adaptabilidade para
+  dispositivos moveis e telas desktop.
+
+[RNF09] Integridade dos Dados de Tabuleiro
+- Mascaras e solucoes de Sudoku com exatamente 81 caracteres por matriz.
