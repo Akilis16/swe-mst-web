@@ -651,7 +651,13 @@ button#answer:disabled {
 
 /* Responsividade básica */
 @media (max-width: 900px) {
-  #start, #replay, #answer, #timer, #lives, #game_type {
+
+  #start,
+  #replay,
+  #answer,
+  #timer,
+  #lives,
+  #game_type {
     position: static;
     margin: 8px auto;
     display: block;
