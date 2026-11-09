@@ -7,21 +7,17 @@ export function TicTacToeModePage() {
     <PageShell>
       <BackNav backTo="/jogos" />
       <section className="modo">
-        <button className="btn-1vs1" type="button">
-          <Link to="/jogos/velha/local">
-            <img src="/icons/person-fill.svg" alt="" />
-            <h1>X</h1>
-            <img src="/icons/person-fill.svg" alt="" />
-          </Link>
-        </button>
+        <Link className="btn-1vs1" to="/jogos/velha/local" aria-label="Dois jogadores">
+          <img src="/icons/person-fill.svg" alt="" />
+          <h1>X</h1>
+          <img src="/icons/person-fill.svg" alt="" />
+        </Link>
 
-        <button className="btn-1vsPc" type="button">
-          <Link to="/jogos/velha/cpu">
-            <img src="/icons/person-fill.svg" alt="" />
-            <h1>X</h1>
-            <img src="/icons/pc-display-horizontal.svg" alt="" />
-          </Link>
-        </button>
+        <Link className="btn-1vsPc" to="/jogos/velha/cpu" aria-label="Contra o computador">
+          <img src="/icons/person-fill.svg" alt="" />
+          <h1>X</h1>
+          <img src="/icons/pc-display-horizontal.svg" alt="" />
+        </Link>
       </section>
     </PageShell>
   )
