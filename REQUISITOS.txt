@@ -95,6 +95,18 @@ sessoes de jogos.
 [RF18] Redirecionamento 404
 - Rotas desconhecidas sao redirecionadas para a rota raiz '/'.
 
+[RF19] Login Opcional
+- Tela '/entrar' autentica via POST /api/v1/auth/login. Os jogos seguem
+  acessiveis sem conta ('Jogar sem entrar').
+
+[RF20] Cadastro de Jogador
+- Tela '/cadastro' (nome, e-mail, senha de 8 a 72 caracteres e confirmacao)
+  chama POST /api/v1/auth/register e ja autentica o jogador.
+
+[RF21] Sessao Autenticada
+- JWT salvo no localStorage (chave 'mst.auth') e enviado como
+  'Authorization: Bearer'. Token expirado ou recusado (401) e descartado.
+
 ======================================================================
 3. REQUISITOS NAO FUNCIONAIS (RNF)
 ======================================================================
@@ -125,8 +137,8 @@ sessoes de jogos.
   estruturados da API.
 
 [RNF07] Seguranca e Limpeza de Escopo
-- Ausencia de modulos de autenticacao fantasmas ou bibliotecas desnecessarias,
-  mantendo foco no catalogo publico e jogos cognitivos.
+- Sem codigo fantasma ou bibliotecas desnecessarias. A autenticacao e
+  opcional, nao bloqueia rotas publicas e o cliente guarda apenas o JWT.
 
 [RNF08] Compatibilidade e Responsividade
 - Funcionamento consistente nos principais navegadores e adaptabilidade para

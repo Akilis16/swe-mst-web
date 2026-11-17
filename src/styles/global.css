@@ -70,6 +70,69 @@ header hr {
   color: black;
 }
 
+/* -------------------- Acesso à conta (cabeçalho) -------------------- */
+.cabecalho {
+  position: relative;
+}
+
+.conta-acesso {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.conta-mini {
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 28px;
+  border: 2px solid black;
+  box-shadow: 3px 3px 7px rgb(51, 51, 51);
+  background-color: rgb(211, 237, 255);
+  color: black;
+  font-family: 'Rowdies', cursive;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.conta-mini:hover {
+  background-color: rgb(218, 239, 253);
+}
+
+.conta-mini:active {
+  transform: scale(0.98);
+}
+
+.conta-mini img {
+  width: 16px;
+  height: 16px;
+}
+
+.conta-nome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Rowdies', cursive;
+  font-size: 14px;
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conta-nome img {
+  width: 18px;
+  height: 18px;
+}
+
 /* -------------------- Botões de Voltar -------------------- */
 .voltar {
   display: flex;
@@ -623,6 +686,148 @@ button#answer:disabled {
   font-weight: bold;
 }
 
+/* -------------------- Entrar / Cadastro -------------------- */
+.conta {
+  display: flex;
+  justify-content: center;
+  padding: 2vh 16px 24px;
+}
+
+.conta-card {
+  background-color: rgb(211, 237, 255);
+  width: 360px;
+  max-width: 100%;
+  border: 2px solid black;
+  border-radius: 20px;
+  box-shadow: 10px 7px 15px rgb(51, 51, 51);
+  padding: 22px 26px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.conta-card h1 {
+  font-family: 'Rowdies', cursive;
+  font-size: 26px;
+  text-align: center;
+}
+
+.conta-card hr {
+  height: 3px;
+  width: 100%;
+  background: black;
+  border: 0;
+  margin: 8px 0 12px 0;
+}
+
+.conta-sub {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.conta-campo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.conta-campo label {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.conta-campo input {
+  height: 40px;
+  padding: 0 12px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: black;
+}
+
+.conta-campo input:focus {
+  outline: none;
+  background-color: #eef6fb;
+  box-shadow: 3px 3px 7px rgb(51, 51, 51);
+}
+
+.conta-campo input.invalido {
+  border-color: #a10101;
+}
+
+.conta-campo-erro {
+  color: #a10101;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.conta-aviso {
+  width: 100%;
+  margin: 16px 0 0 0;
+  font-size: 14px;
+}
+
+.btn-conta {
+  margin-top: 22px;
+  width: 180px;
+  height: 50px;
+  border-radius: 28px;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(160, 217, 255);
+  box-shadow: 10px 7px 15px rgb(51, 51, 51);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.btn-conta:hover {
+  background-color: rgb(218, 239, 253);
+}
+
+.btn-conta:active {
+  transform: scale(0.98);
+}
+
+.btn-conta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-conta img {
+  width: 22px;
+  height: 22px;
+}
+
+.btn-conta span {
+  font-family: 'Rowdies', cursive;
+  color: rgb(36, 36, 36);
+  font-size: 18px;
+}
+
+.conta-alternativa {
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.conta-alternativa a,
+.conta-pular {
+  color: black;
+  font-weight: bold;
+}
+
+.conta-pular {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
 /* -------------------- Status / Banners -------------------- */
 .status-line {
   text-align: center;
@@ -678,5 +883,18 @@ button#answer:disabled {
 
   .answers-container {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .conta-acesso {
+    position: static;
+    transform: none;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .conta-card {
+    padding: 18px 16px 22px;
   }
 }

@@ -1,3 +1,4 @@
+import { tokenStorage } from '../auth/tokenStorage'
 import { ApiCode } from './routes'
 
 export class ApiError extends Error {
@@ -31,13 +32,19 @@ export function apiBase() {
 
 /**
  * @param {string} path
- * @param {{ method?: string, body?: unknown, headers?: Record<string, string> }} [options]
+ * @param {{ method?: string, body?: unknown, headers?: Record<string, string>, auth?: boolean }} [options]
+ *   auth: false não envia o token (usado no login e no cadastro).
  */
 export async function request(path, options = {}) {
-  const { method = 'GET', body, headers: customHeaders } = options
+  const { method = 'GET', body, headers: customHeaders, auth = true } = options
   const headers = {
     Accept: 'application/problem+json, application/json',
     ...customHeaders,
+  }
+
+  const authorization = auth ? tokenStorage.authorization() : null
+  if (authorization && !headers.Authorization) {
+    headers.Authorization = authorization
   }
 
   if (body !== undefined) {
@@ -64,6 +71,10 @@ export async function request(path, options = {}) {
 
   const payload = await response.json().catch(() => ({}))
   if (!response.ok) {
+    // Token expirado ou revogado: volta ao modo visitante.
+    if (response.status === 401 && authorization) {
+      tokenStorage.clear()
+    }
     throw new ApiError(normalizeProblem(payload, response.status))
   }
   return payload

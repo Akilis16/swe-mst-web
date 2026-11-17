@@ -5,6 +5,9 @@
  * sem espalhar caminhos pelos componentes.
  */
 export const routes = {
+  authLogin: '/api/v1/auth/login',
+  authRegister: '/api/v1/auth/register',
+  me: '/api/v1/me',
   games: '/api/v1/games',
   playSessions: '/api/v1/play-sessions',
   playSession: (id) => `/api/v1/play-sessions/${id}`,
@@ -26,4 +29,7 @@ export const ApiCode = {
   SUDOKU_CELL_IS_GIVEN: 'SUDOKU_CELL_IS_GIVEN',
   HANGMAN_LETTER_ALREADY_USED: 'HANGMAN_LETTER_ALREADY_USED',
   NETWORK_ERROR: 'NETWORK_ERROR',
+  INVALID_CREDENTIALS: 'INVALID_CREDENTIALS',
+  UNAUTHENTICATED: 'UNAUTHENTICATED',
+  EMAIL_ALREADY_USED: 'EMAIL_ALREADY_USED',
 }
