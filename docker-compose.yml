@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    image: mst-web:latest
+    container_name: mst-web
+    ports:
+      - "8080:80"
+    environment:
+      # Para onde o Nginx encaminha /api. Por padrão aponta para a API rodando
+      # na máquina host (porta 4000). Se a API estiver em outro container na
+      # mesma rede, use o nome do serviço, ex.: http://swe-mst-api:4000
+      API_URL: ${API_URL:-http://host.docker.internal:4000}
+    extra_hosts:
+      # Permite que o container alcance o host no Linux via host.docker.internal
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
