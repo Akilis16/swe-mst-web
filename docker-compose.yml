@@ -4,7 +4,7 @@ services:
     image: mst-web:latest
     container_name: mst-web
     ports:
-      - "8080:80"
+      - "5000:80"
     environment:
       # Para onde o Nginx encaminha /api. Por padrão aponta para a API rodando
       # na máquina host (porta 4000). Se a API estiver em outro container na
