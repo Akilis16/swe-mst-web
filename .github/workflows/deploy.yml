@@ -1,0 +1,19 @@
+name: Deploy via API
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deploy
+        run: |
+          curl -X POST "https://deploy.yuridevs.com.br/api/deploy" \
+            -H "Authorization: Bearer ${{ secrets.SYSTEM_DEPLOY_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"ref":"${{ github.ref }}","sha":"${{ github.sha }}","actor":"${{ github.actor }}"}' \
+            --fail-with-body --max-time 360
+

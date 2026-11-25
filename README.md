@@ -34,3 +34,26 @@ Esses três jogos usam os endpoints próprios da MST API, em que o servidor deci
 | 2048 | `/jogos/2048` | `POST /2048/rounds`, `POST /2048/rounds/{id}/moves` |
 
 Os motores locais devolvem as jogadas no mesmo formato das respostas da API (`MemoryMoveResponse`, `GuessResponse`, `Game2048MoveResponse`), então o componente aplica as duas do mesmo jeito. As imagens das cartas ficam em `public/img/Jogo_da_Memoria/`, no caminho que a API devolve em `imagePath`.
+
+## Docker
+
+A imagem faz o build do Vite e serve o `dist/` com Nginx, que também encaminha `/api` para a API MST (mesmo papel do proxy do Vite em dev) e devolve o `index.html` para as rotas do React Router.
+
+```bash
+docker compose up -d --build
+# abre em http://localhost:8080
+```
+
+Por padrão o Nginx encaminha `/api` para `http://host.docker.internal:4000` (a API rodando na sua máquina). Para apontar para outro endereço, defina `API_URL`:
+
+```bash
+API_URL=http://192.168.0.10:4000 docker compose up -d --build
+```
+
+Sem compose:
+
+```bash
+docker build -t swe-mst-web .
+docker run -d -p 8080:80 -e API_URL=http://host.docker.internal:4000 \
+  --add-host=host.docker.internal:host-gateway swe-mst-web
+```
