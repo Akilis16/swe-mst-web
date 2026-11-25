@@ -5,11 +5,12 @@ import { BackNav } from '../components/layout/BackNav'
 import { PageShell } from '../components/layout/PageShell'
 
 const ALL_GAMES = [
-  { slug: 'memoria', name: 'Jogo da Memória', to: '#', image: '/jogos/jogo-da-memoria.png', className: 'jg1', disabled: true },
+  { slug: 'memoria', name: 'Jogo da Memória', to: '/jogos/memoria', image: '/jogos/jogo-da-memoria.png', className: 'jg1' },
   { slug: 'tictactoe', name: 'Jogo da Velha', to: '/jogos/velha', image: '/jogos/jogo-da-velha.png', className: 'jg2' },
   { slug: 'quiz', name: 'Quiz', to: '/jogos/quiz', image: '/jogos/quiz.png', className: 'jg3' },
   { slug: 'sudoku', name: 'Sudoku', to: '/jogos/sudoku', image: '/jogos/sudoku.png', className: 'jg4' },
-  { slug: 'forca', name: 'Jogo da Forca', to: '#', image: '/jogos/jogo-da-forca.png', className: 'jg5', disabled: true },
+  { slug: 'forca', name: 'Jogo da Forca', to: '/jogos/forca', image: '/jogos/jogo-da-forca.png', className: 'jg5' },
+  { slug: '2048', name: '2048', to: '/jogos/2048', image: '/jogos/2048.png', className: 'jg6' },
 ]
 
 export function CatalogPage() {
