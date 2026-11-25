@@ -25,7 +25,7 @@ sessoes de jogos.
 
 [RF02] Catalogo de Jogos
 - O sistema deve disponibilizar na rota '/jogos' a grade de jogos:
-  Jogo da Memoria, Jogo da Velha, Quiz, Sudoku e Jogo da Forca.
+  Jogo da Memoria, Jogo da Velha, Quiz, Sudoku, Jogo da Forca e 2048.
   Os jogos ativos permitem inicio imediato; os demais indicam estado informativo.
 
 [RF03] Selecao de Modo do Jogo da Velha
@@ -106,6 +106,30 @@ sessoes de jogos.
 [RF21] Sessao Autenticada
 - JWT salvo no localStorage (chave 'mst.auth') e enviado como
   'Authorization: Bearer'. Token expirado ou recusado (401) e descartado.
+
+[RF22] Jogo da Memoria
+- Rota '/jogos/memoria'. Temas Rick And Morty, Cartoon e Escudo de Time;
+  18 cartas (9 pares). Par errado conta erro e desvira em 500 ms. Painel
+  com nome do jogador e tempo; ao fim, "Parabens" com tempo e erros.
+
+[RF23] Jogo da Forca
+- Rota '/jogos/forca'. Categoria Frutas, Animais, Paises ou Cores; letras
+  A-Z uma vez cada. 6 erros = derrota; todas as letras = vitoria. Ao fim
+  mostra a palavra e o botao 'Novo jogo'.
+
+[RF24] 2048
+- Rota '/jogos/2048'. Tabuleiro 4x4 com setas do teclado ou gesto de
+  deslizar. Fusoes somam pontos; nasce um 2 apos cada jogada que mexe.
+  2048 vence; sem jogadas, fim de jogo. Botao de atualizar reinicia.
+
+[RF25] Memoria, Forca e 2048 na API (logado)
+- Logado, a partida usa /memory/rounds, /hangman/rounds e /2048/rounds:
+  o servidor sorteia, decide cada jogada e calcula a pontuacao exibida ao
+  fim. Trocar de partida no meio abandona a sessao aberta.
+
+[RF26] Memoria, Forca e 2048 sem login
+- Sem login, rodam so no navegador, sem chamar a API. Se a API cair no
+  meio de uma partida logada, o jogo avisa e recomeca em modo local.
 
 ======================================================================
 3. REQUISITOS NAO FUNCIONAIS (RNF)

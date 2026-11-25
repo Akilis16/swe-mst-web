@@ -22,8 +22,39 @@ describe('Rotas da Aplicação (App)', () => {
     expect(screen.getByRole('link', { name: /jogo da velha/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /quiz/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /sudoku/i })).toBeInTheDocument()
-    expect(screen.getByText('Jogo da Memória')).toBeInTheDocument()
-    expect(screen.getByText('Jogo da Forca')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /jogo da memória/i })).toHaveAttribute('href', '/jogos/memoria')
+    expect(screen.getByRole('link', { name: /jogo da forca/i })).toHaveAttribute('href', '/jogos/forca')
+    expect(screen.getByRole('link', { name: /2048/i })).toHaveAttribute('href', '/jogos/2048')
+  })
+
+  test('renderiza MemoryPage na rota "/jogos/memoria"', async () => {
+    render(
+      <MemoryRouter initialEntries={['/jogos/memoria']}>
+        <App />
+      </MemoryRouter>,
+    )
+    expect(screen.getByRole('heading', { name: 'Jogo da Memória' })).toBeInTheDocument()
+    expect(await screen.findAllByRole('gridcell')).toHaveLength(18)
+  })
+
+  test('renderiza HangmanPage na rota "/jogos/forca"', () => {
+    render(
+      <MemoryRouter initialEntries={['/jogos/forca']}>
+        <App />
+      </MemoryRouter>,
+    )
+    expect(screen.getByRole('heading', { name: 'Jogo da Forca' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Frutas' })).toBeInTheDocument()
+  })
+
+  test('renderiza Game2048Page na rota "/jogos/2048"', async () => {
+    render(
+      <MemoryRouter initialEntries={['/jogos/2048']}>
+        <App />
+      </MemoryRouter>,
+    )
+    expect(screen.getByRole('heading', { name: '2048' })).toBeInTheDocument()
+    expect(await screen.findByRole('grid', { name: 'Tabuleiro do 2048' })).toBeInTheDocument()
   })
 
   test('renderiza TicTacToeModePage na rota "/jogos/velha"', () => {

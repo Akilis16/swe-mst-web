@@ -2,6 +2,7 @@ import { ApiError, request } from './http'
 import { routes } from './routes'
 import { sessionsApi } from './sessionsApi'
 import { listGames } from './gamesApi'
+import { game2048Api } from './game2048Api'
 
 describe('cliente da API', () => {
   beforeEach(() => {
@@ -55,6 +56,26 @@ describe('cliente da API', () => {
     expect(routes.tictactoeMove('42')).toBe('/api/v1/play-sessions/42/tictactoe/moves')
     expect(routes.quizAnswer('42')).toBe('/api/v1/play-sessions/42/quiz/answers')
     expect(routes.sudokuCell('42')).toBe('/api/v1/play-sessions/42/sudoku/cells')
+  })
+
+  test('as rotas da memória, forca e 2048 batem com a MST API', () => {
+    expect(routes.memoryThemes).toBe('/api/v1/memory/themes')
+    expect(routes.memoryRounds).toBe('/api/v1/memory/rounds')
+    expect(routes.memoryMove('7')).toBe('/api/v1/memory/rounds/7/moves')
+    expect(routes.hangmanCategories).toBe('/api/v1/hangman/categories')
+    expect(routes.hangmanRounds).toBe('/api/v1/hangman/rounds')
+    expect(routes.hangmanGuess('7')).toBe('/api/v1/hangman/rounds/7/guesses')
+    expect(routes.game2048Rounds).toBe('/api/v1/2048/rounds')
+    expect(routes.game2048Move('7')).toBe('/api/v1/2048/rounds/7/moves')
+  })
+
+  test('jogada do 2048 envia só a direção', async () => {
+    fetch.mockResolvedValue({ ok: true, status: 200, json: async () => ({ moved: true }) })
+    await game2048Api.move('r1', { direction: 'UP' })
+    expect(fetch).toHaveBeenCalledWith(
+      '/api/v1/2048/rounds/r1/moves',
+      expect.objectContaining({ method: 'POST', body: JSON.stringify({ direction: 'UP' }) }),
+    )
   })
 
   test('traduz falha de rede', async () => {

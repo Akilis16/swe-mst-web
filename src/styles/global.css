@@ -686,6 +686,405 @@ button#answer:disabled {
   font-weight: bold;
 }
 
+/* -------------------- Jogo da Memória -------------------- */
+.memoria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.memoria-titulo {
+  font-family: 'Rowdies', cursive;
+  font-size: 26px;
+  text-align: center;
+}
+
+.memoria .opcoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2vh 5vh;
+  margin-top: 2%;
+}
+
+.memoria .opcoes button {
+  font-size: 12px;
+  width: 130px;
+  height: 30px;
+  border: 2px solid #111;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.memoria .opcoes button.ativo {
+  background-color: rgb(160, 217, 255);
+  color: black;
+  border-color: black;
+}
+
+.memoria .opcoes button:active {
+  transform: scale(0.98);
+}
+
+.memoria-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  padding: 20px 0 50px;
+}
+
+.memoria-painel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(211, 237, 255);
+  border: 2px solid black;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 100%;
+  max-width: 800px;
+  padding: 14px 30px;
+  margin-bottom: 20px;
+}
+
+.memoria .grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.memoria .card {
+  aspect-ratio: 3/4;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  border-radius: 5px;
+  position: relative;
+  transition: all 400ms ease;
+  transform-style: preserve-3d;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.memoria .card:disabled {
+  cursor: default;
+}
+
+.memoria .face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: #ffffff;
+  border: 5px solid #00b5cc;
+  border-radius: 5px;
+  transition: all 400ms ease;
+  backface-visibility: hidden;
+}
+
+.memoria .front {
+  transform: rotateY(180deg);
+}
+
+.memoria .reveal-card {
+  transform: rotateY(180deg);
+}
+
+.memoria .disabled-card {
+  filter: saturate(0);
+  opacity: 0.5;
+}
+
+.memoria-fim {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.memoria-fim .btn-jogar {
+  margin-top: 10px;
+  width: 180px;
+  height: 44px;
+  border-radius: 28px;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(160, 217, 255);
+  cursor: pointer;
+  box-shadow: 6px 5px 10px rgb(51, 51, 51);
+}
+
+.memoria-fim .btn-jogar h1 {
+  font-size: 16px;
+  font-family: 'Rowdies', cursive;
+}
+
+/* -------------------- Jogo da Forca -------------------- */
+.container.forca {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  margin: 10px auto 40px;
+  max-width: 34em;
+  padding: 2em 3em 2.5em;
+  font-size: 16px;
+}
+
+.forca-titulo {
+  font-family: 'Rowdies', cursive;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.forca #options-container {
+  text-align: center;
+  width: 100%;
+}
+
+.forca #options-container div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1.2em 0 2em 0;
+}
+
+.forca #options-container button {
+  padding: 0.6em 1.2em;
+  border: 3px solid #000000;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 0.3em;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.forca #options-container button:disabled {
+  border: 3px solid #808080;
+  color: #808080;
+  background-color: #efefef;
+  cursor: not-allowed;
+}
+
+.forca #options-container button.active {
+  background-color: rgb(160, 217, 255);
+  border: 3px solid #000000;
+  color: #000000;
+}
+
+.forca .letter-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+.forca .letters {
+  height: 2.4em;
+  width: 2.4em;
+  border-radius: 0.3em;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.forca .letters:disabled {
+  border-color: #808080;
+  color: #808080;
+  background-color: #efefef;
+  cursor: not-allowed;
+}
+
+.forca #user-input-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  min-height: 1.4em;
+  font-size: 1.8em;
+  margin: 0.6em 0 1.2em 0;
+}
+
+.forca #canvas {
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+}
+
+.forca .new-game-popup {
+  background-color: #ffffff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 6px;
+}
+
+.forca #result-text h2 {
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.forca #result-text p {
+  font-size: 1.25em;
+  margin: 1em 0 1.5em 0;
+}
+
+.forca #result-text span {
+  font-weight: 600;
+}
+
+.forca #new-game-button {
+  margin-top: 12px;
+  font-size: 1.25em;
+  padding: 0.5em 1em;
+  background-color: rgb(160, 217, 255);
+  border: 3px solid #000000;
+  color: #000000;
+  border-radius: 0.2em;
+  cursor: pointer;
+}
+
+.forca .win-msg {
+  color: #39d78d;
+}
+
+.forca .lose-msg {
+  color: #fe5152;
+}
+
+/* -------------------- 2048 -------------------- */
+.jogo-2048 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+}
+
+.jogo-2048 .menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.jogo-2048 .menu h1 {
+  font-family: 'Rowdies', cursive;
+  font-size: 32px;
+}
+
+.jogo-2048 .menu h2 {
+  font-size: 20px;
+}
+
+.btn-atualizar {
+  width: 34px;
+  height: 34px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgb(211, 237, 255);
+  box-shadow: 3px 3px 7px rgb(51, 51, 51);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.btn-atualizar:hover {
+  background-color: rgb(218, 239, 253);
+}
+
+.btn-atualizar img {
+  width: 70%;
+  height: 70%;
+}
+
+#board {
+  width: min(400px, 90vw);
+  aspect-ratio: 1;
+  background-color: rgb(160, 217, 255);
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 10px 7px 15px rgb(51, 51, 51);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 3%;
+  padding: 3%;
+  touch-action: none;
+  user-select: none;
+}
+
+#board .tile {
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Rowdies', cursive;
+  font-size: clamp(18px, 6vw, 36px);
+  color: rgb(36, 36, 36);
+  transition: background-color 0.1s ease;
+}
+
+#board .tile:not(:empty) {
+  border-color: black;
+  box-shadow: 3px 3px 7px rgb(51, 51, 51);
+}
+
+#board .x2 { background-color: #ffffff; }
+#board .x4 { background-color: #fff6d6; }
+#board .x8 { background-color: #d3edff; }
+#board .x16 { background-color: #a0d9ff; }
+#board .x32 { background-color: #7cc6f7; }
+#board .x64 { background-color: #55b2ee; }
+#board .x128 { background-color: #2f9be0; color: #ffffff; }
+#board .x256 { background-color: #1f84c9; color: #ffffff; }
+#board .x512 { background-color: #176cab; color: #ffffff; }
+#board .x1024 { background-color: #10578d; color: #ffffff; }
+#board .x2048 { background-color: #f5b700; }
+#board .x4096 { background-color: #ff8a00; }
+#board .x8192 { background-color: #e0452b; color: #ffffff; }
+
+#board .x1024,
+#board .x2048,
+#board .x4096,
+#board .x8192 {
+  font-size: clamp(14px, 4.5vw, 28px);
+}
+
+.instrucao-2048 {
+  font-size: 14px;
+  text-align: center;
+}
+
 /* -------------------- Entrar / Cadastro -------------------- */
 .conta {
   display: flex;
@@ -884,6 +1283,11 @@ button#answer:disabled {
   .answers-container {
     grid-template-columns: 1fr;
   }
+
+  .memoria .grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -896,5 +1300,18 @@ button#answer:disabled {
 
   .conta-card {
     padding: 18px 16px 22px;
+  }
+
+  .memoria .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .memoria-painel {
+    padding: 10px 14px;
+  }
+
+  .container.forca {
+    padding: 1.5em 1em 2em;
   }
 }

@@ -17,6 +17,14 @@ export const routes = {
   tictactoeMove: (id) => `/api/v1/play-sessions/${id}/tictactoe/moves`,
   quizAnswer: (id) => `/api/v1/play-sessions/${id}/quiz/answers`,
   sudokuCell: (id) => `/api/v1/play-sessions/${id}/sudoku/cells`,
+  memoryThemes: '/api/v1/memory/themes',
+  memoryRounds: '/api/v1/memory/rounds',
+  memoryMove: (id) => `/api/v1/memory/rounds/${id}/moves`,
+  hangmanCategories: '/api/v1/hangman/categories',
+  hangmanRounds: '/api/v1/hangman/rounds',
+  hangmanGuess: (id) => `/api/v1/hangman/rounds/${id}/guesses`,
+  game2048Rounds: '/api/v1/2048/rounds',
+  game2048Move: (id) => `/api/v1/2048/rounds/${id}/moves`,
 }
 
 export const ApiCode = {
@@ -25,9 +33,13 @@ export const ApiCode = {
   SESSION_ALREADY_ENDED: 'SESSION_ALREADY_ENDED',
   TICTACTOE_CELL_ALREADY_MATCHED: 'TICTACTOE_CELL_ALREADY_MATCHED',
   MEMORY_POSITION_ALREADY_MATCHED: 'MEMORY_POSITION_ALREADY_MATCHED',
+  MEMORY_POSITION_ALREADY_REVEALED: 'MEMORY_POSITION_ALREADY_REVEALED',
+  MEMORY_ROUND_FINISHED: 'MEMORY_ROUND_FINISHED',
   QUIZ_QUESTION_ALREADY_ANSWERED: 'QUIZ_QUESTION_ALREADY_ANSWERED',
   SUDOKU_CELL_IS_GIVEN: 'SUDOKU_CELL_IS_GIVEN',
   HANGMAN_LETTER_ALREADY_USED: 'HANGMAN_LETTER_ALREADY_USED',
+  HANGMAN_ROUND_FINISHED: 'HANGMAN_ROUND_FINISHED',
+  GAME2048_ROUND_FINISHED: 'GAME2048_ROUND_FINISHED',
   NETWORK_ERROR: 'NETWORK_ERROR',
   INVALID_CREDENTIALS: 'INVALID_CREDENTIALS',
   UNAUTHENTICATED: 'UNAUTHENTICATED',
